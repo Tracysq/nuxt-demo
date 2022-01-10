@@ -332,7 +332,8 @@
     </div>
 
     <footer>
-      <div style='text-align:right;'>Page <span class="pageCounter"></span>/<span class="totalPages"></span></div>
+      <div>Xena Networks - Valkyrie2544 Test Report </div>
+      <div >Page <span class="pageCounter"></span>/<span class="totalPages"></span></div>
     </footer>
   </div>
 </template>
@@ -360,5 +361,10 @@ table.gridtable td {border-width: 1px;padding: 8px;border-style: solid;border-co
       width: 200px;
     }
   }
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
