@@ -1,8 +1,8 @@
 <template>
-  <div id="pdfDom">
-    <div class="logo">
+  <div class="report">
+    <header class="logo">
       <img src="/logo-black.png" alt="">
-    </div>
+    </header>
     <div class="content">
       <h1>Valkyrie2544 Test Report</h1>
       <div class="part">
@@ -330,15 +330,24 @@
         </table>
       </div>
     </div>
+
+    <footer>
+      <div style='text-align:right;'>Page <span class="pageCounter"></span>/<span class="totalPages"></span></div>
+    </footer>
   </div>
 </template>
 
 <style lang="scss" scoped>
+table  {page-break-inside: avoid;}
 table.gridtable {font-family: verdana,arial,sans-serif;font-size:11px;color:#333333;border-width: 1px;border-color: #666666;border-collapse: collapse;}
 
 table.gridtable th {border-width: 1px;padding: 8px;border-style: solid;border-color: #666666;background-color: #fff;}
 
 table.gridtable td {border-width: 1px;padding: 8px;border-style: solid;border-color: #666666;background-color: #ffffff;}
+
+.report {
+  padding: 0 20px;
+}
 
 .logo {
   text-align: right;

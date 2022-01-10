@@ -44,6 +44,10 @@ export default {
     baseURL: '/',
   },
 
+  server: {
+    port: 8001
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {
