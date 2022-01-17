@@ -218,7 +218,6 @@
 <script>
 import Report from './report.vue'
 // import GenPDF from '~/server/api/pdf'
-// import {api_todo} from '~/plugins/api'
 export default {
   name: 'IndexPage',
   components: {
@@ -233,7 +232,7 @@ export default {
     }
   },
   mounted(){
-    // this.getTodos()
+    this.getTodos()
   },
   methods: {
     exportPDF(){
@@ -242,13 +241,13 @@ export default {
       // GenPDF()
     },
 
-    // getTodos(){
-    //   api_todo()
-    //     .then(res => {
-    //       console.log('成功')
-    //     })
-    //     .catch()
-    // }
+    getTodos(){
+      this.$api.todos()
+        .then(res => {
+          console.log('成功')
+        })
+        .catch()
+    }
   }
 }
 </script>
