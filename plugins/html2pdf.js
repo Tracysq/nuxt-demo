@@ -35,6 +35,22 @@ import { jsPDF } from "jspdf"
 //   }
 //  }
 
+// addPageHeader = (item) => {
+//   let pageHeader = document.createElement("div");
+//   pageHeader.className = "c-page-head";
+//   pageHeader.innerHTML = "页头内容";
+//   item.parentNode.insertBefore(pageHeader,item);
+// }
+
+// addPageFooter = (item,currentPage,diff,isLastest) => {
+//   let pageFooter = document.createElement("div");
+//   pageFooter.className = "c-page-foot";
+//   pageFooter.innerHTML = "第 "+ currentPage +" 页 ";
+//   isLastest?item.parentNode.insertBefore(pageFooter,null):item.parentNode.insertBefore(pageFooter,item);
+//   pageFooter.style.marginTop = diff+"px";
+//   pageFooter.style.marginBottom = "10px";
+// }
+
 export default {
   install (Vue, options) {
   Vue.prototype.getPdf = function (title) {
