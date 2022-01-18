@@ -1,0 +1,10 @@
+mutation UPDATE_USER($userId: ID!, $isAdmin: Boolean!, $banListed: Boolean!) {
+  administration {
+    updateUser(userId: $userId, isAdmin: $isAdmin, banListed: $banListed) {
+      id
+      username
+      isAdmin
+      banListed
+    }
+  }
+}
