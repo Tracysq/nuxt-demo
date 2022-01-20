@@ -6,6 +6,7 @@
         :maxlength="4"
         @input="onInput($event, index)"
         @keydown="onKeyDown($event, index)"
+        @blur="onBlur($event, index)"
         type="text"
       />
       <span class="colon" v-show="index !== segements.length - 1">:</span>
@@ -73,7 +74,7 @@ export default {
 
     onKeyDown(event, index) {
       const keyCode = event.keyCode;
-      const el = event.target
+      const el = event.target;
       const value = el.value;
       console.log(keyCode);
       if (keyCode === 37 || keyCode === 8) {
@@ -88,6 +89,22 @@ export default {
           this.$el.getElementsByTagName("input")[index + 1].focus();
         }
       }
+    },
+
+    onBlur(event, index) {
+      if (index === this.len - 1) {
+        let regexp =
+          /^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/;
+        if (regexp.test(this.segements.join(":"))) {
+          // this.isIP = false;
+          console.log(true)
+        } else {
+          // this.isIP = true;
+          console.log(false)
+          this.$emit("error", this.segements);
+        }
+      }
+      this.$emit("blur", { event, index });
     },
   },
 };
