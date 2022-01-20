@@ -1,4 +1,5 @@
-query {
+query FETCH_ALL_USERS {
+  # 查询备注
   administration {
     users {
       id

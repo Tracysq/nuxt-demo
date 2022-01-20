@@ -17,6 +17,7 @@
 <script>
 import administration from '~/apollo/queries/users'
 import update_user from '~/apollo/queries/update_user'
+import sub_notification from '~/apollo/queries/sub_notification'
 
 export default {
   data(){
@@ -29,7 +30,16 @@ export default {
       prefetch: true,
       query: administration,
       update: data => data.administration.users
-    }
+    },
+
+    // $subscribe: {
+    //   notification: {
+    //     query: sub_notification,
+    //     result(data) {
+    //       console.log(data)
+    //     }
+    //   }
+    // }
   },
   methods: {
     async updateUser() {

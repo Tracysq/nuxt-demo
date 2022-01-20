@@ -1,0 +1,24 @@
+subscription SUB_NOTIFICATION {
+  notification {
+    newVal {
+      id
+      creationDate
+      notificationType
+      msg {
+        messageType
+        code
+        body
+      }
+    }
+    oldVal {
+      id
+      creationDate
+      notificationType
+      msg {
+        messageType
+        code
+        body
+      }
+    }
+  }
+}
