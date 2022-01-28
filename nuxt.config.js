@@ -34,7 +34,8 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/vuetify'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,7 +58,18 @@ export default {
       target: 'https://jsonplaceholder.typicode.com',
       secure: false,
       changeOrigin: true
-    }
+    },
+    '/api/': {
+      target: 'https://localhost',
+      secure: false,
+      changeOrigin: true
+    },
+    '/ws/': {
+      target: 'wss://nginx',
+      secure: false,
+      changeOrigin: true,
+      ws: true
+    },
   },
 
   apollo: {
@@ -66,6 +78,7 @@ export default {
         // httpEndpoint: 'https://jsonplaceholder.typicode.com/users',
         skipSSLValidation: true,
         httpEndpoint: 'https://localhost/api/graphql',
+        // wsEndpoint: `wss://nginx/ws/subscribe`,
         httpLinkOptions: {
           credentials: 'same-origin'
         }
