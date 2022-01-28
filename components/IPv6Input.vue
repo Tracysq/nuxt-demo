@@ -20,16 +20,21 @@ export default {
     validateIp(ip) {
       const matchReg = /^([a-f0-9]{1,4}:){7}[a-f0-9]{1,4}$/i;
       const ret = ip.match(matchReg);
-      console.log(ret);
+      // console.log(ret);
+      const classList = this.$el.classList;
       if (ret) {
-        alert("ipv6 is ok");
+        if (classList.contains("error")) {
+          classList.remove("error");
+        }
       } else {
-        alert("ipv6 is ng");
+        if (!classList.contains("error")) {
+          this.$el.classList.add("error");
+        }
       }
     },
     onBlur() {
       let ip = this.value;
-      if(!ip.trim()) return
+      if (!ip.trim()) return;
       if (ip.includes("::") && ip.match(/::/g).length === 1) {
         // short format
         let tempArr = this.splitString(ip, "::");
@@ -53,7 +58,7 @@ export default {
         ip = tempArr.join(":");
       }
       console.log(ip);
-      const isValid = this.validateIp(ip);
+      this.validateIp(ip);
     },
   },
 };
@@ -61,5 +66,9 @@ export default {
 
 <style lang="scss" scoped>
 .ipv6-input {
+  &.error {
+    outline-offset: 0px;
+    outline: red auto 1px;
+  }
 }
 </style>
