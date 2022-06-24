@@ -212,16 +212,30 @@
     <!-- <div id="pdfDom">
       <Report></Report>
     </div> -->
+
+    <h1>Vuetify</h1>
+    <hr>
+    <v-btn color="blue">vuetify button</v-btn>
+
+    <h1>Element UI</h1>
+    <hr>
+    <el-button>test button</el-button>
+    <div style="width: 1000px; height: 200px;">
+      <Table />
+    </div>
   </div>
 </template>
 
 <script>
 import Report from './report.vue'
 // import GenPDF from '~/server/api/pdf'
+import Table from '~/components/element/Table.vue'
+
 export default {
   name: 'IndexPage',
   components: {
-    Report
+    Report,
+    Table
   },
   computed: {
     NUXT_URL(){

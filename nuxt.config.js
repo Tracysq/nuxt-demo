@@ -26,7 +26,8 @@ export default {
   plugins: [
     '~/plugins/axios',
     '~/plugins/api',
-    {src: '~/plugins/vue-html-pdf.js', ssr: false}
+    {src: '~/plugins/vue-html-pdf.js', ssr: false},
+    '~/plugins/element-ui'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -101,6 +102,17 @@ export default {
       scss: {
         implementation: require('sass'),
       },
+    },
+    babel: {
+      plugins: [
+        [
+          'component',
+          {
+            libraryName: 'element-ui',
+            styleLibraryName: 'theme-chalk'
+          }
+        ]
+      ]
     }
   }
 }
